@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Maquina de Turing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="TuringMachine.js"></script>
+        <script src="main.js"></script>
+        <style>
+            #divMovedora {
+                display: inline-block;
+            }
+            
+            #fita {
+                display: inline-block;
+            }
+            
+            .celula {
+                display: inline-block;
+                /*width: 20px;*/
+                /*height: 20px;*/
+                margin-right: 5px;
+                margin-top: 5px;
+                border: 1px solid;
+                padding: 5px;
+            }
+            
+            #container{
+                width: 1000px;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <div id="container">
+
+            <div id="inputs">
+
+                <table>
+
+                    <tr>
+                        <td>Somar:</td>
+                        <td><input type="text" id="num1" maxlength="1"></td>
+                        <td>com:</td>
+                        <td><input type="text" id="num2" maxlength="1"></td>
+                        <td><button onclick="startMachine()">Iniciar</button></td>
+                    </tr>
+                </table>
+
+                <div id="containerFita" style="border: 1px solid; width: 100%;height: 50px; margin-top: 20px">
+                    
+                    <div id="divMovedora"></div>
+                    <div id="fita"> </div>
+                </div>
+
+<!--                <button onclick="moverFitaEsquerda()">Mover para Esqueda</button>
+                <button onclick="moverFitaDireita()">Mover para Direita</button>-->
+
+
+            </div>
+
+        </div>
+
+    </body>
+</html>
