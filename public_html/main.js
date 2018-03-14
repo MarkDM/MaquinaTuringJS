@@ -1,4 +1,5 @@
 var loop;
+var arrayDivsFita = [];
 
 function startMachine() {
 
@@ -134,6 +135,7 @@ function renderizarFita(fita) {
         divCelula.classList.add('celula');
         divCelula.appendChild(document.createTextNode(fita[i]));
         divFita.appendChild(divCelula);
+        arrayDivsFita.push(divCelula);
     }
 }
 
