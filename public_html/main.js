@@ -72,7 +72,7 @@ function processar(tm) {
             if (tm.posicaoPreenchida()) {
                 tm.apagarPosicao();
                 tm.parar();
-                
+
             }
             break;
 
@@ -82,10 +82,10 @@ function processar(tm) {
 function gerarFita(num1, num2) {
 
     var arrFita = [];
-    
-    var total = parseInt(num1) +  parseInt(num2) + 2;
+
+    var total = parseInt(num1) + parseInt(num2) + 2;
     console.log(total);
-    
+
     for (var i = 0; i < total; i++) {
         arrFita.push('*')
     }
@@ -99,7 +99,7 @@ function gerarFita(num1, num2) {
 function resetarMaquina() {
     limparFita();
     clearInterval(loop);
-    
+
     setarTamanhoDivMovedora(0);
 }
 
@@ -132,8 +132,15 @@ function renderizarFita(fita) {
 
     for (var i in fita) {
         let divCelula = document.createElement('div');
-        divCelula.classList.add('celula');
-        divCelula.appendChild(document.createTextNode(fita[i]));
+
+        if (fita[i] == '') {
+            divCelula.classList.add('celulaVazia');
+        } else {
+            divCelula.classList.add('celula');
+        }
+
+        //divCelula.appendChild(document.createTextNode(fita[i]));
+        divCelula.innerText = fita[i];
         divFita.appendChild(divCelula);
         arrayDivsFita.push(divCelula);
     }
