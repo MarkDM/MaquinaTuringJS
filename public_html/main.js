@@ -17,6 +17,8 @@ function startMachine() {
     var tm = new TuringMachine(fita);
     resetarMaquina();
     renderizarFita(fita);
+    var tamFita = document.getElementById('fita').clientWidth;
+    setarTamanhoDivMovedora(467.111);
     tm.iniciar();
 
     loop = setInterval(function () {
@@ -79,18 +81,16 @@ function processar(tm) {
 function gerarFita(num1, num2) {
 
     var arrFita = [];
-
-    for (var i = 0; i < num1; i++) {
-        arrFita.push('*');
+    
+    var total = parseInt(num1) +  parseInt(num2) + 2;
+    console.log(total);
+    
+    for (var i = 0; i < total; i++) {
+        arrFita.push('*')
     }
 
-    arrFita.push('');
-
-    for (var i = 0; i < num2; i++) {
-        arrFita.push('*');
-    }
-
-    arrFita.push('');
+    arrFita[num1] = '';
+    arrFita[total - 1] = '';
 
     return arrFita;
 }
@@ -98,6 +98,7 @@ function gerarFita(num1, num2) {
 function resetarMaquina() {
     limparFita();
     clearInterval(loop);
+    
     setarTamanhoDivMovedora(0);
 }
 
@@ -109,14 +110,14 @@ function moverFitaDireita() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
 
-    setarTamanhoDivMovedora(larguraAtual + 20);
+    setarTamanhoDivMovedora(larguraAtual - 27.889);
 
 }
 
 function moverFitaEsquerda() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
-    setarTamanhoDivMovedora(larguraAtual - 20);
+    setarTamanhoDivMovedora(larguraAtual + 27.889);
 
 }
 

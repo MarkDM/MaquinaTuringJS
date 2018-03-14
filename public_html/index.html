@@ -14,12 +14,15 @@ and open the template in the editor.
         <style>
             #divMovedora {
                 display: inline-block;
+                height: 10px;
+                /*width: calc(50%);*/
+                background-color: red;
             }
-            
+
             #fita {
                 display: inline-block;
             }
-            
+
             .celula {
                 display: inline-block;
                 /*width: 20px;*/
@@ -29,11 +32,25 @@ and open the template in the editor.
                 border: 1px solid;
                 padding: 5px;
             }
-            
+
             #container{
                 width: 1000px;
+                /*border: 1px solid;*/
+                margin-left: calc(50% - 500px);
+
             }
-            
+
+            #imgCabecote {
+                width: 25px;
+                transform: rotate(-180deg);
+            }
+
+            #containerImgCabecote {
+                width: 100%;
+                margin-left: calc(50% - 12.5px);
+            }
+
+
         </style>
     </head>
     <body>
@@ -54,13 +71,18 @@ and open the template in the editor.
                 </table>
 
                 <div id="containerFita" style="border: 1px solid; width: 100%;height: 50px; margin-top: 20px">
-                    
+
                     <div id="divMovedora"></div>
                     <div id="fita"> </div>
+
+                </div>
+                <div id="containerImgCabecote">
+                    <img id="imgCabecote" src="img/cabecote.jpg">
                 </div>
 
-<!--                <button onclick="moverFitaEsquerda()">Mover para Esqueda</button>
-                <button onclick="moverFitaDireita()">Mover para Direita</button>-->
+
+                <!--                <button onclick="moverFitaEsquerda()">Mover para Esqueda</button>
+                                <button onclick="moverFitaDireita()">Mover para Direita</button>-->
 
 
             </div>
