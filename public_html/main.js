@@ -19,7 +19,7 @@ function startMachine() {
     resetarMaquina();
     renderizarFita(fita);
     var tamFita = document.getElementById('fita').clientWidth;
-    setarTamanhoDivMovedora(467.111);
+    setarTamanhoDivMovedora(500-30.99);
     tm.iniciar();
 
     loop = setInterval(function () {
@@ -111,14 +111,14 @@ function moverFitaDireita() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
 
-    setarTamanhoDivMovedora(larguraAtual - 27.889);
+    setarTamanhoDivMovedora(larguraAtual - 30.99);
 
 }
 
 function moverFitaEsquerda() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
-    setarTamanhoDivMovedora(larguraAtual + 27.889);
+    setarTamanhoDivMovedora(larguraAtual + 30.99);
 
 }
 
@@ -132,15 +132,24 @@ function renderizarFita(fita) {
 
     for (var i in fita) {
         let divCelula = document.createElement('div');
+        divCelula.classList.add('celula');
+        let img;
 
         if (fita[i] == '') {
-            divCelula.classList.add('celulaVazia');
+            img = document.createElement('img');
+            img.setAttribute('id', 'imgVazia');
+            img.setAttribute('src', 'img/void.png');
         } else {
-            divCelula.classList.add('celula');
+            img = document.createElement('img');
+            img.setAttribute('id', 'imgCheia');
+            img.setAttribute('src', 'img/estrela.png');
         }
 
+        img.classList.add('imgCelula');
+        divCelula.appendChild(img);
+
         //divCelula.appendChild(document.createTextNode(fita[i]));
-        divCelula.innerText = fita[i];
+        //divCelula.innerText = fita[i];
         divFita.appendChild(divCelula);
         arrayDivsFita.push(divCelula);
     }
