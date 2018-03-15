@@ -29,7 +29,7 @@ and open the template in the editor.
                 /*height: 20px;*/
                 /*margin-right: 5px;*/
                 /*margin-top: 5px;*/
-                margin: 5px;
+                margin: 2px;
                 border: 1px solid #939393;
                 padding: 5px;
             }
@@ -64,6 +64,26 @@ and open the template in the editor.
                 /*padding: 10px;*/
             }
 
+            #inputs {
+                width: 100%;
+            }
+
+            #visor {
+                height: 38px; 
+                width: 100px;
+                border: 1px solid #939393;
+                background-color: black;
+                display: inline-table;
+                line-height: 38px;
+                color: #3bef00;
+                text-align: center;
+                font-size: 14pt;
+            }
+
+            table {
+                display: inline-block;
+            }
+
 
         </style>
     </head>
@@ -83,6 +103,8 @@ and open the template in the editor.
                         <td><button onclick="startMachine()">Iniciar</button></td>
                     </tr>
                 </table>
+
+                <div id="visor"></div>
 
                 <div id="containerFita">
 

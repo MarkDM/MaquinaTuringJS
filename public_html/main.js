@@ -1,6 +1,6 @@
 var loop;
 var arrayDivsFita = [];
-var larguraContainer = 1490;
+var larguraContainer = 1300;
 var larguraImgCelula = 25.99;
 var num1;
 var num2;
@@ -10,6 +10,8 @@ var stepSize;
 
 window.onload = function () {
     definicoesCss();
+    //document.getElementById('visor').style.backgroundColor = 'green';
+    setarValorVisor('PRONTO');
 }
 
 function startMachine() {
@@ -33,6 +35,7 @@ function startMachine() {
     //destacarCelula(0);
     stepSize = obterStepSize();
 
+
     var tamFita = document.getElementById('fita').clientWidth;
     setarTamanhoDivMovedora((larguraContainer / 2 - larguraImgCelula + 4));
 
@@ -48,7 +51,7 @@ function startMachine() {
         destacarCelula(tm.getPosicaoAtual());
 
 
-    }, 500);
+    }, 700);
 
 }
 
@@ -67,6 +70,7 @@ function processar(tm) {
 
     switch (tm.estadoAtual) {
         case 0:
+        setarValorVisor('0');
             console.log('Maquina no estado 0');
             if (tm.posicaoPreenchida()) {
                 moverFitaEsquerda();
@@ -81,6 +85,7 @@ function processar(tm) {
             }
             break;
         case 1:
+        setarValorVisor('1');
             console.log('Maquina no estado 1');
             if (tm.posicaoPreenchida()) {
                 tm.moverDireita();
@@ -93,6 +98,7 @@ function processar(tm) {
             }
             break;
         case 2:
+        setarValorVisor('2');
             console.log('Maquina no estado 2');
             if (tm.posicaoPreenchida()) {
                 ApagarCelula(tm.getPosicaoAtual());
@@ -236,6 +242,11 @@ function destacarCelula(numCelula) {
 
 
 }
+
+function setarValorVisor(valor){
+    document.getElementById('visor').innerHTML = valor;
+}
+
 
 function sleep(milliseconds) {
     var start = new Date().getTime();
