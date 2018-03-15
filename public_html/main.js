@@ -35,14 +35,19 @@ function startMachine() {
 
     var tamFita = document.getElementById('fita').clientWidth;
     setarTamanhoDivMovedora((larguraContainer / 2 - larguraImgCelula + 4));
-    
+
     tm.iniciar();
 
+    destacarCelula(0);
+
     loop = setInterval(function () {
-        //destacarCelula(tm.getPosicaoAtual() + 1);
+
+
+
         processar(tm);
-        
-        
+        destacarCelula(tm.getPosicaoAtual());
+
+
     }, 500);
 
 }
@@ -58,18 +63,18 @@ function processar(tm) {
 
     //console.log('processar(): chamada');
     //console.log(tm.fita);
-    
+
 
     switch (tm.estadoAtual) {
         case 0:
             console.log('Maquina no estado 0');
             if (tm.posicaoPreenchida()) {
-
-                tm.moverDireita();
                 moverFitaEsquerda();
+                tm.moverDireita();
                 tm.estadoAtual = 0;
             } else {
                 tm.preencherPosicao();
+                preencherCelula(tm.getPosicaoAtual());
                 tm.moverDireita();
                 moverFitaEsquerda();
                 tm.estadoAtual = 1;
@@ -90,14 +95,16 @@ function processar(tm) {
         case 2:
             console.log('Maquina no estado 2');
             if (tm.posicaoPreenchida()) {
+                ApagarCelula(tm.getPosicaoAtual());
                 tm.apagarPosicao();
+                
                 tm.parar();
 
             }
             break;
 
     }
-    
+
 }
 
 function gerarFita(num1, num2) {
@@ -120,7 +127,7 @@ function gerarFita(num1, num2) {
 function resetarMaquina() {
     limparFita();
     clearInterval(loop);
-
+    arrayDivsFita = [];
     setarTamanhoDivMovedora(0);
 }
 
@@ -150,6 +157,20 @@ function obterStepSize() {
 function setarTamanhoDivMovedora(largura) {
     var divMovedora = document.getElementById('divMovedora');
     divMovedora.style.width = largura + 'px';
+}
+
+function preencherCelula(numCelula) {
+    if (arrayDivsFita[numCelula] == undefined) {
+        return;
+    }
+    arrayDivsFita[numCelula].childNodes[0].setAttribute('src','img/estrela.png');
+}
+
+function ApagarCelula(numCelula) {
+    if (arrayDivsFita[numCelula] == undefined) {
+        return;
+    }
+    arrayDivsFita[numCelula].childNodes[0].setAttribute('src','img/void.png');
 }
 
 function renderizarFita(fita) {
@@ -199,7 +220,21 @@ function definicoesCss() {
 }
 
 function destacarCelula(numCelula) {
-    arrayDivsFita[numCelula].style.border = "1px solid red";
+
+    if (arrayDivsFita[numCelula] == undefined) {
+        return;
+    }
+
+    for (var i in arrayDivsFita) {
+        if (i == numCelula) {
+            arrayDivsFita[i].style.border = "1px dashed blue";
+            //stepSize = obterStepSize() + 2;
+        } else {
+            arrayDivsFita[i].style.border = "1px solid";
+        }
+    }
+
+
 }
 
 function sleep(milliseconds) {
