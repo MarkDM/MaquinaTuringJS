@@ -61,12 +61,12 @@ function processar(tm) {
             if (tm.posicaoPreenchida()) {
 
                 tm.moverDireita();
-                moverFitaDireita();
+                moverFitaEsquerda();
                 tm.estadoAtual = 0;
             } else {
                 tm.preencherPosicao();
                 tm.moverDireita();
-                moverFitaDireita();
+                moverFitaEsquerda();
                 tm.estadoAtual = 1;
             }
             break;
@@ -74,11 +74,11 @@ function processar(tm) {
             console.log('Maquina no estado 1');
             if (tm.posicaoPreenchida()) {
                 tm.moverDireita();
-                moverFitaDireita();
+                moverFitaEsquerda();
                 tm.estadoAtual = 1;
             } else {
                 tm.moverEsquerda();
-                moverFitaEsquerda();
+                moverFitaDireita();
                 tm.estadoAtual = 2;
             }
             break;
@@ -126,7 +126,7 @@ function moverFitaDireita() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
     // setarTamanhoDivMovedora(larguraAtual - (larguraImgCelula + larguraImgCelula /2) - 2);
-    setarTamanhoDivMovedora(larguraAtual - stepSize);
+    setarTamanhoDivMovedora(larguraAtual + stepSize);
 }
 
 function moverFitaEsquerda() {
