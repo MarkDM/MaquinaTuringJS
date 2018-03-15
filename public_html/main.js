@@ -1,10 +1,22 @@
 var loop;
 var arrayDivsFita = [];
+var larguraContainer = 1300;
+var larguraImgCelula = 25.99;
+var num1;
+var num2;
+
+//Largura da div fita / total de celulas
+var stepSize;
+
+window.onload = function () {
+    definicoesCss();
+}
 
 function startMachine() {
 
-    let num1 = document.getElementById('num1').value;
-    let num2 = document.getElementById('num2').value;
+    num1 = document.getElementById('num1').value;
+    num2 = document.getElementById('num2').value;
+
 
     console.log(num1);
     console.log(num2);
@@ -18,8 +30,11 @@ function startMachine() {
     var tm = new TuringMachine(fita);
     resetarMaquina();
     renderizarFita(fita);
+    stepSize = obterStepSize();
+
     var tamFita = document.getElementById('fita').clientWidth;
-    setarTamanhoDivMovedora(500-30.99);
+    setarTamanhoDivMovedora((larguraContainer / 2 - larguraImgCelula + 4));
+
     tm.iniciar();
 
     loop = setInterval(function () {
@@ -110,16 +125,20 @@ function limparFita() {
 function moverFitaDireita() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
-
-    setarTamanhoDivMovedora(larguraAtual - 30.99);
-
+    // setarTamanhoDivMovedora(larguraAtual - (larguraImgCelula + larguraImgCelula /2) - 2);
+    setarTamanhoDivMovedora(larguraAtual - stepSize);
 }
 
 function moverFitaEsquerda() {
     var divMovedora = document.getElementById('divMovedora');
     var larguraAtual = divMovedora.clientWidth;
-    setarTamanhoDivMovedora(larguraAtual + 30.99);
+    // setarTamanhoDivMovedora(larguraAtual - (larguraImgCelula + larguraImgCelula /2) - 2);
+    setarTamanhoDivMovedora(larguraAtual - stepSize);
 
+}
+
+function obterStepSize() {
+    return document.getElementById('fita').clientWidth / (parseInt(num1) + parseInt(num2) + 2);
 }
 
 function setarTamanhoDivMovedora(largura) {
@@ -155,6 +174,23 @@ function renderizarFita(fita) {
     }
 }
 
+
+function definicoesCss() {
+    //Largura e margin left container geral
+    let containerGeral = document.getElementById('container');
+    containerGeral.style.width = larguraContainer + 'px';
+    containerGeral.style.marginLeft = 'calc(50% - ' + (larguraContainer / 2) + 'px)';
+
+    //CSS imagens celula
+
+//    let arrImgsCelula = document.getElementsByClassName('imgCelula');
+//    
+//    for(var img in arrImgsCelula){
+//        img.style.width = larguraImgCelula + 'px';
+//        img.style.border = '1px solid'; 
+//    }
+
+}
 
 function sleep(milliseconds) {
     var start = new Date().getTime();
