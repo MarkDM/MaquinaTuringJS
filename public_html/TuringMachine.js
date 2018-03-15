@@ -36,5 +36,9 @@ var TuringMachine = function (fita) {
     this.isMaquinaRodando = function(){
         return self.maquinaRodando;
     }
+    
+    this.getPosicaoAtual = function (){
+        return self.posicaoAtual;
+    }
 
 };

@@ -1,6 +1,6 @@
 var loop;
 var arrayDivsFita = [];
-var larguraContainer = 1300;
+var larguraContainer = 1490;
 var larguraImgCelula = 25.99;
 var num1;
 var num2;
@@ -30,16 +30,20 @@ function startMachine() {
     var tm = new TuringMachine(fita);
     resetarMaquina();
     renderizarFita(fita);
+    //destacarCelula(0);
     stepSize = obterStepSize();
 
     var tamFita = document.getElementById('fita').clientWidth;
     setarTamanhoDivMovedora((larguraContainer / 2 - larguraImgCelula + 4));
-
+    
     tm.iniciar();
 
     loop = setInterval(function () {
+        //destacarCelula(tm.getPosicaoAtual() + 1);
         processar(tm);
-    }, 1000);
+        
+        
+    }, 500);
 
 }
 
@@ -52,8 +56,9 @@ function processar(tm) {
         return;
     }
 
-    console.log('processar(): chamada');
-    console.log(tm.fita);
+    //console.log('processar(): chamada');
+    //console.log(tm.fita);
+    
 
     switch (tm.estadoAtual) {
         case 0:
@@ -92,6 +97,7 @@ function processar(tm) {
             break;
 
     }
+    
 }
 
 function gerarFita(num1, num2) {
@@ -190,6 +196,10 @@ function definicoesCss() {
 //        img.style.border = '1px solid'; 
 //    }
 
+}
+
+function destacarCelula(numCelula) {
+    arrayDivsFita[numCelula].style.border = "1px solid red";
 }
 
 function sleep(milliseconds) {
