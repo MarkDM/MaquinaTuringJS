@@ -227,10 +227,10 @@ function destacarCelula(numCelula) {
 
     for (var i in arrayDivsFita) {
         if (i == numCelula) {
-            arrayDivsFita[i].style.border = "1px dashed blue";
+            arrayDivsFita[i].style.border = "1px solid red";
             //stepSize = obterStepSize() + 2;
         } else {
-            arrayDivsFita[i].style.border = "1px solid";
+            arrayDivsFita[i].style.border = "1px solid #939393";
         }
     }
 
