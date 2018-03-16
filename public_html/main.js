@@ -60,6 +60,7 @@ function processar(tm) {
 
     if (!tm.isMaquinaRodando()) {
         console.log('Maquina parada');
+        setarValorVisor('PARADO');
         clearInterval(loop);
         return;
     }
@@ -105,6 +106,7 @@ function processar(tm) {
                 tm.apagarPosicao();
                 
                 tm.parar();
+
 
             }
             break;
