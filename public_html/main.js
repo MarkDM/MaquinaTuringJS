@@ -19,12 +19,16 @@ function startMachine() {
     num1 = document.getElementById('num1').value;
     num2 = document.getElementById('num2').value;
 
-
     console.log(num1);
     console.log(num2);
 
     if (num1 == '' || num2 == '') {
         alert('Favor informar os numeros que deseja somar');
+        return;
+    }
+    
+    if (isNaN(parseInt(num1)) || isNaN(parseInt(num2))) {
+        alert('Os valores informados precisam ser numeros de 0 a 9')
         return;
     }
 
@@ -44,9 +48,9 @@ function startMachine() {
     destacarCelula(0);
 
     loop = setInterval(function () {
-
-
-
+        if (!tm.isMaquinaRodando()) {
+            setarValorVisor('PARADO');
+        }
         processar(tm);
         setarValorVisor(tm.estadoAtual);
         destacarCelula(tm.getPosicaoAtual());
@@ -60,7 +64,6 @@ function startMachine() {
 function processar(tm) {
 
     if (!tm.isMaquinaRodando()) {
-        console.log('Maquina parada');
         setarValorVisor('PARADO');
         clearInterval(loop);
         return;
@@ -102,7 +105,7 @@ function processar(tm) {
             if (tm.posicaoPreenchida()) {
                 ApagarCelula(tm.getPosicaoAtual());
                 tm.apagarPosicao();
-
+                console.log('Maquina parada');
                 tm.parar();
 
 
