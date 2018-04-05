@@ -26,7 +26,7 @@ function startMachine() {
         alert('Favor informar os numeros que deseja somar');
         return;
     }
-    
+
     if (isNaN(parseInt(num1)) || isNaN(parseInt(num2))) {
         alert('Os valores informados precisam ser numeros de 0 a 9')
         return;
@@ -48,11 +48,12 @@ function startMachine() {
     destacarCelula(0);
 
     loop = setInterval(function () {
+
+        processar(tm);
+        setarValorVisor(tm.estadoAtual);
         if (!tm.isMaquinaRodando()) {
             setarValorVisor('PARADO');
         }
-        processar(tm);
-        setarValorVisor(tm.estadoAtual);
         destacarCelula(tm.getPosicaoAtual());
 
 
