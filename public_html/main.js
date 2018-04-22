@@ -27,7 +27,7 @@ function startMachine() {
         return;
     }
 
-    if (isNaN(parseInt(num1)) || isNaN(parseInt(num2))) {
+    if (isNaN(num1) || isNaN(num2)) {
         alert('Os valores informados precisam ser numeros de 0 a 9')
         return;
     }
